@@ -32,26 +32,28 @@
                     <div>
                         <h1 class="text-3xl font-bold">Welcome to Chirper!</h1>
                         <p class="mt-4 text-base-content/60">This is your brand new Laravel application. Time to make it
-                            sing (or chirp)!</p>
-
-
+                            sing !</p>
 
 <x-layout>
     <x-slot:title>
         Welcome
     </x-slot:title>
     <div class="max-w-2xl mx-auto">
-        @foreach ($chirps as $chirp)
+        @forelse ($chirps as $chirp)
             <div class="card bg-base-100 shadow mt-8">
                 <div class="card-body">
                     <div>
-                        <div class="font-semibold">{{ $chirp['author'] }}</div>
-                        <div class="mt-1">{{ $chirp['message'] }}</div>
-                        <div class="text-sm text-gray-500 mt-2">{{ $chirp['time'] }}</div>
+                        <div class="font-semibold"> {{ $chirp->user ? $chirp->user->name : 'Anonymous' }}</div>
+                        <div class="mt-1">{{ $chirp->message }}</div>
+                        <div class="text-sm text-gray-500 mt-2">
+                            {{ $chirp->created_at->diffForHumans() }}
+                        </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <p class="text-gray-500">No chirps yet. Be the first to chirp!</p>
+        @endforelse
     </div>
 </x-layout>
                     </div>
@@ -62,7 +64,7 @@
 
     <footer class="footer footer-center p-5 bg-base-300 text-base-content text-xs">
         <div>
-            <p class="font-bold">Live on the internet</p>
+            
             <p>© 2025 Chirper - Built with Laravel and ❤️</p>
         </div>
     </footer>
