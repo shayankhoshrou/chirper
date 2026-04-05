@@ -19,16 +19,17 @@ class="rounded-full" />
 </div>
 </div>
 @endif
-        &lt;div class="min-w-0"&gt;
-            &lt;div class="flex items-center gap-1"&gt;
-                &lt;span class="text-sm font-semibold"&gt;{{ $chirp-&gt;user ? $chirp-&gt;user-&gt;name : 'Anonymous' }}&lt;/span&gt;
-                &lt;span class="text-base-content/60"&gt;·&lt;/span&gt;
-                &lt;span class="text-sm text-base-content/60"&gt;{{ $chirp-&gt;created_at-&gt;diffForHumans() }}&lt;/span&gt;
-            &lt;/div&gt;
+        <div class="min-w-0">
+            <div class="flex items-center gap-1">
+                <span class="text-sm font-semibold">{{ $chirp->user ? $chirp->user->name : 'Anonymous' }}</span>
+                <span class="text-base-content/60">·</span>
+                <span class="text-sm text-base-content/60">{{ $chirp->created_at->diffForHumans() }}</span>
+            </div>
 
-            &lt;p class="mt-1"&gt;
-                {{ $chirp-&gt;message }}
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+            <p class="mt-1">
+                {{ $chirp->message }}
+            </p>
+        </div>
+    </div>
+</div>
+</div>
